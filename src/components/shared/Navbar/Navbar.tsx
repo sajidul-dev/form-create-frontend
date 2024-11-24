@@ -1,17 +1,24 @@
 import { memo, useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../../../assets/icons/logo.svg";
 
 export const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(isOpen);
   return (
-    <nav className="bg-blue-600 text-white shadow-lg">
-      <div className="relative container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-2xl font-bold">MyApp</div>
+    <nav className="side-bar bg-blue-600 rounded-lg text-white shadow-lg w-20 lg:w-[88px] xl:w-24 ml-2 my-2 fixed flex justify-center content-between">
+      <div className=" h-full relative container mx-auto py-3 flex flex-col">
+        <div className="flex justify-center items-center mt-8">
+          <NavLink
+            to="/"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "" : ""
+            }
+          >
+            <img src={logo} alt="" />
+          </NavLink>
+        </div>
 
-        {/* Hamburger Menu Button for Small Devices */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -46,8 +53,8 @@ export const Navbar = memo(() => {
             isOpen ? "block" : "hidden"
           } md:block absolute md:static bg-blue-700 md:bg-transparent w-full md:w-auto top-full left-0 md:top-auto md:left-auto z-50`}
         >
-          <ul className="flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0 px-4 md:px-0 py-4 md:py-0">
-            <li>
+          <ul className="flex flex-col ">
+            {/* <li>
               <NavLink
                 to="/"
                 className={({ isActive, isPending }) =>
@@ -60,15 +67,8 @@ export const Navbar = memo(() => {
               >
                 Home
               </NavLink>
-            </li>
-            <li>
-              <a
-                href="#task1"
-                className="block px-4 py-2 hover:bg-blue-500 rounded-md"
-              >
-                Task1
-              </a>
-            </li>
+            </li> */}
+
             <li>
               <NavLink
                 to="/report"
@@ -81,6 +81,20 @@ export const Navbar = memo(() => {
                 }
               >
                 Report
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/users"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "block px-4 py-2 bg-blue-500 rounded-md"
+                    : "block px-4 py-2"
+                }
+              >
+                Users
               </NavLink>
             </li>
           </ul>

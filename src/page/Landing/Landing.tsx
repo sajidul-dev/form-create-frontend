@@ -1,10 +1,8 @@
-import Layout from "../../components/Layout/Layout";
-
 export const Landing = () => {
   return (
-    <Layout>
-      <div>This is home</div>
-    </Layout>
+    <p className="container mx-auto">
+      <p>Welcome to customer data analysis</p>
+    </p>
   );
 };
 
