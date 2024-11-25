@@ -10,6 +10,7 @@ export interface ProductOrder {
 }
 
 export const useColumnName = (obj: {}) => {
+  if (!obj) return [];
   const columns = Object.keys(obj).map((key) => ({
     key,
     label: key

@@ -1,13 +1,16 @@
 import { memo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/icons/logo.svg";
+import { BiSolidReport } from "react-icons/bi";
+import { FaShoppingCart, FaUsers } from "react-icons/fa";
+import { AiFillProduct } from "react-icons/ai";
 
 export const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="side-bar bg-blue-600 rounded-lg text-white shadow-lg w-20 lg:w-[88px] xl:w-24 ml-2 my-2 fixed flex justify-center content-between">
-      <div className=" h-full relative container mx-auto py-3 flex flex-col">
+    <nav className="side-bar bg-[#474BAE] rounded-lg text-white shadow-lg w-52 lg:w-52 xl:w-52 ml-2 my-2 fixed flex justify-center content-between">
+      <div className="h-full relative container mx-auto py-3 flex flex-col">
         <div className="flex justify-center items-center mt-8">
           <NavLink
             to="/"
@@ -48,27 +51,8 @@ export const Navbar = memo(() => {
         </button>
 
         {/* Menu Items */}
-        <div
-          className={`${
-            isOpen ? "block" : "hidden"
-          } md:block absolute md:static bg-blue-700 md:bg-transparent w-full md:w-auto top-full left-0 md:top-auto md:left-auto z-50`}
-        >
-          <ul className="flex flex-col ">
-            {/* <li>
-              <NavLink
-                to="/"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "block px-4 py-2 bg-blue-500 rounded-md"
-                    : "block px-4 py-2"
-                }
-              >
-                Home
-              </NavLink>
-            </li> */}
-
+        <div className={` w-full flex-grow flex justify-center`}>
+          <ul className="w-full flex flex-col justify-center gap-6 mx-2">
             <li>
               <NavLink
                 to="/report"
@@ -76,11 +60,12 @@ export const Navbar = memo(() => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "block px-4 py-2 bg-blue-500 rounded-md"
-                    : "block px-4 py-2"
+                    ? "px-4 py-2 bg-[#2A2C7B] rounded-lg flex justify-start gap-3 items-center"
+                    : "px-4 py-2 flex justify-start gap-3 items-center"
                 }
               >
-                Report
+                <BiSolidReport style={{ fontSize: "18px" }} />
+                <p>Report</p>
               </NavLink>
             </li>
             <li>
@@ -90,11 +75,42 @@ export const Navbar = memo(() => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "block px-4 py-2 bg-blue-500 rounded-md"
-                    : "block px-4 py-2"
+                    ? " px-4 py-2 bg-[#2A2C7B] rounded-lg flex justify-start gap-3 items-center"
+                    : " px-4 py-2 flex justify-start gap-3 items-center"
                 }
               >
+                <FaUsers style={{ fontSize: "18px" }} />
                 Users
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/products"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "px-4 py-2 bg-[#2A2C7B] rounded-lg flex justify-start gap-3 items-center"
+                    : "px-4 py-2 flex justify-start gap-3 items-center"
+                }
+              >
+                <AiFillProduct style={{ fontSize: "18px" }} />
+                Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/purchase-history"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "px-4 py-2 bg-[#2A2C7B] rounded-lg flex justify-start gap-3 items-center"
+                    : "px-4 py-2 flex justify-start gap-3 items-center"
+                }
+              >
+                <FaShoppingCart style={{ fontSize: "18px" }} />
+                Orders
               </NavLink>
             </li>
           </ul>

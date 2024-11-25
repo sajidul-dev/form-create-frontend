@@ -1,14 +1,17 @@
 import { Navbar } from "../shared/Navbar";
-// import { AppProviderProps } from "../../types/app";
 import { Outlet } from "react-router-dom";
+import TopNavbar from "../shared/Navbar/TopNavbar";
 
 const Layout = () => {
   return (
-    <div className="grid grid-cols-10 h-full">
-      <div className="col-span-1 ">
+    <div className="grid grid-cols-12 h-full">
+      <div className="col-span-2 ">
         <Navbar />
       </div>
-      <div className="max-w-screen-2xl w-full mx-auto col-span-9 flex-1 pr-10">
+      <div className="w-full mx-auto col-span-10 flex-grow pr-6 max-h-screen overflow-hidden">
+        <div className="">
+          <TopNavbar />
+        </div>
         <div className="col-span-9">
           <Outlet />
         </div>
